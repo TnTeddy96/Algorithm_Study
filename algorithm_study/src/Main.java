@@ -22,5 +22,4 @@ public class Main {
 		String s = sc.next();
 		find(s);
 	}
-
 }
