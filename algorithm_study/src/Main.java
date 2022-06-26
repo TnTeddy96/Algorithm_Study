@@ -1,22 +1,29 @@
-import java.util.Arrays;
-import java.util.Scanner;
-import java.io.*;
-	
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
+
 public class Main{
 	
 	public static void main(String[] args) throws IOException {
-		Scanner sc = new Scanner(System.in);
-		BufferedWriter bf = new BufferedWriter(new OutputStreamWriter(System.out));
-		int sizeArr = sc.nextInt();
-		int[] numArr = new int[sizeArr];
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		String s = br.readLine();
+		StringTokenizer st = new StringTokenizer(s);
+		int A = Integer.parseInt(st.nextToken());
+		int B = Integer.parseInt(st.nextToken());
 		
-		for(int i =0; i<numArr.length ;i++) {
-			numArr[i] = sc.nextInt();
-		}
-		Arrays.sort(numArr);
+		if(A>B)
+			bw.write(">");
+		else if (A==B)
+			bw.write("==");
+		else
+			bw.write("<");
 		
-		for(int k : numArr)
-			bf.write(k + "\n");
-		bf.close();
+		bw.flush();
+		bw.close();
+		
 	}
 }
