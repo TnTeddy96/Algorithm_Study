@@ -3,26 +3,29 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-
+import java.util.StringTokenizer;
 
 public class Main{
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		int[] arr = new int[9];
-		for(int i = 0; i<arr.length;i++) {
-			arr[i]=Integer.parseInt(br.readLine());
+		String line = br.readLine();
+		
+		StringTokenizer st = new StringTokenizer(line);
+		
+		int a = Integer.parseInt(st.nextToken());
+		int b = Integer.parseInt(st.nextToken());
+		int v = Integer.parseInt(st.nextToken());
+		int i =0;
+		if((v-a)%(a-b)!=0){
+			i=(v-a)/(a-b)+1+1;
 		}
-		int where= 0;
-		int max = arr[0];
-		for(int i =1;i<arr.length;i++) {
-			if(max<arr[i]) {
-				max=arr[i];
-				where=i + 1;
-			}
+		else {
+			i=(v-a)/(a-b)+1;
 		}
-		bw.write(max + "\n" + where);
+		
+		bw.write(String.valueOf(i));
 		bw.flush();
-		br.close();
+		bw.close();
 	}
 }
