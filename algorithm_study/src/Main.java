@@ -3,27 +3,31 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.StringTokenizer;
 
 public class Main{
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		String line = br.readLine();
+		int num =Integer.parseInt(br.readLine());
 		
-		StringTokenizer st = new StringTokenizer(line);
-		
-		int a = Integer.parseInt(st.nextToken());
-		int b = Integer.parseInt(st.nextToken());
-		int v = Integer.parseInt(st.nextToken());
-		int i =0;
-		if((v-a)%(a-b)!=0){
-			i=(v-a)/(a-b)+1+1;
+		int i;
+		for(i=0;;i++) {
+			if(num<10 || num==12)
+				break;
+			num-=5;
+		}
+		if(num==8) {
+			i=i+1+1;
+		}
+		else if(num==5) {
+			i=i+1;
+		}
+		else if(num==3 || num==6 || num==9 ) {
+			i+=num/3;
 		}
 		else {
-			i=(v-a)/(a-b)+1;
+			i=-1;
 		}
-		
 		bw.write(String.valueOf(i));
 		bw.flush();
 		bw.close();
